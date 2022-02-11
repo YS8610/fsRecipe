@@ -77,5 +77,6 @@ export class RecipeAddComponent implements OnInit {
         this.fb.control("")
       ])
     })
+    this.router.navigate(['/'])
   }
 }
