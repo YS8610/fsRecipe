@@ -1,6 +1,7 @@
 <table>
   <ng-container *ngFor="let item of recipesList">
-    <tr > {{item.title}}</tr>
+    <tr > <a [routerLink]="['recipe',item.id]">{{item.title}}</a> </tr>
   </ng-container>
+  <button (click)="onAdd()">Add</button>
 
 </table>
