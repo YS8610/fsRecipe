@@ -1,13 +1,13 @@
 
-<form [formGroup]="newRecipe">
+<form [formGroup]="newRecipe" (ngSubmit)="onAddRecipe()">
 <label for="title">Title: </label>
 <br>
 <input type="text" name ="title" formControlName = "title">
 <br>
-<div formArrayName="ingredients">
+<div formArrayName="ingredientss">
   <p>Ingredients <button type="button"  (click)="onAddIngredient()">+</button>
   </p>
-  <div *ngFor="let ingredient of ingredients.controls; let i=index">
+  <div *ngFor="let ingredient of ingredientss.controls; let i=index">
     <!-- The repeated ingredient template -->
     <input id="ingredient-{{ i }}" type="text" [formControlName]="i">
     <button (click)="onDeleteIngredient(i)">X</button>
@@ -16,7 +16,7 @@
 <br>
 <label for="Instruction">Instruction: </label>
 <br>
-<input type="text" name ="Instruction" formControlName = "Instruction">
+<input type="text" name ="Instruction" formControlName = "instruction">
 <br>
 <label for="Instruction">Image: </label>
 <br>
@@ -24,5 +24,5 @@
 <br>
 <br>
 <button (click)="onBack()">Back</button>
-<button>Add</button>
+<button type="submit" [disabled]="newRecipe.invalid">Add</button>
 </form>
