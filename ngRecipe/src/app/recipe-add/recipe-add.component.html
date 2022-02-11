@@ -4,9 +4,16 @@
 <br>
 <input type="text" name ="title" formControlName = "title">
 <br>
-<label for="Ingredient">Ingredient: </label>
+<div formArrayName="ingredients">
+  <p>Ingredients <button type="button"  (click)="onAddIngredient()">+</button>
+  </p>
+  <div *ngFor="let ingredient of ingredients.controls; let i=index">
+    <!-- The repeated ingredient template -->
+    <input id="ingredient-{{ i }}" type="text" [formControlName]="i">
+    <button (click)="onDeleteIngredient(i)">X</button>
+  </div>
+</div>
 <br>
-
 <label for="Instruction">Instruction: </label>
 <br>
 <input type="text" name ="Instruction" formControlName = "Instruction">
@@ -14,6 +21,7 @@
 <label for="Instruction">Image: </label>
 <br>
 <input type="text" name ="image" formControlName = "image">
+<br>
 <br>
 <button (click)="onBack()">Back</button>
 <button>Add</button>

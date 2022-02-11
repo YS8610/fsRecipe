@@ -35,4 +35,11 @@ export class RecipeAddComponent implements OnInit {
     this.router.navigate(["/"])
   }
 
+  onAddIngredient(){
+    this.ingredients.push(this.fb.control("",[Validators.required,Validators.min(3)]))
+  }
+
+  onDeleteIngredient(i:number){
+    this.ingredients.removeAt(i)
+  }
 }
