@@ -1,1 +1,20 @@
-<p>recipe-add works!</p>
+
+<form [formGroup]="newRecipe">
+<label for="title">Title: </label>
+<br>
+<input type="text" name ="title" formControlName = "title">
+<br>
+<label for="Ingredient">Ingredient: </label>
+<br>
+
+<label for="Instruction">Instruction: </label>
+<br>
+<input type="text" name ="Instruction" formControlName = "Instruction">
+<br>
+<label for="Instruction">Image: </label>
+<br>
+<input type="text" name ="image" formControlName = "image">
+<br>
+<button (click)="onBack()">Back</button>
+<button>Add</button>
+</form>

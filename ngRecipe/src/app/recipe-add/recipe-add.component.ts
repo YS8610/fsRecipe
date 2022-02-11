@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-add',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeAddComponent implements OnInit {
 
-  constructor() { }
+  newRecipe !: FormGroup
+  constructor(
+    private fb : FormBuilder,
+    private router : Router
+  ) { }
 
   ngOnInit(): void {
+    this.newRecipe = this.fb.group({
+      title : ["",[Validators.required, Validators.min(3)]],
+      image : ["",Validators.required],
+      instruction : ["",[Validators.required, Validators.min(3)]],
+      ingredients : this.fb.array([
+        this.fb.control("")
+      ])
+
+    })
+  }
+
+  get ingredients() {
+    return this.newRecipe.get('ingredients') as FormArray;
+  }
+
+  onBack(){
+    this.router.navigate(["/"])
   }
 
 }
