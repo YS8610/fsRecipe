@@ -5,9 +5,9 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 const routes: Routes = [
+  {path:"",component:RecipeListComponent},
   {path:"recipe/:recipeid",component:RecipeDetailComponent},
   {path:"add",component:RecipeAddComponent},
-  {path:"",component:RecipeListComponent},
   {path:"**",redirectTo:"/", pathMatch:"full"}
 ];
 
