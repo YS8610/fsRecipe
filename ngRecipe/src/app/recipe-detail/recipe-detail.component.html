@@ -1,1 +1,17 @@
-{{recipe|json}}
+<div *ngIf="!hasError">
+  <h1>{{recipe.title}}</h1>
+  <img [src]="recipe.image" [alt]="recipe.id">
+  <h2>Ingredients</h2>
+  <ol>
+    <li *ngFor="let i of recipe.ingredients"> {{i}}</li>
+  </ol>
+  <p>{{recipe.instruction}}</p>
+  <button (click)="onBack()">Back</button>
+
+</div>
+
+<ng-container *ngIf = "hasError">
+  <h1 >Not Found</h1>
+  <button (click)="onBack()">Back</button>
+</ng-container>
+

@@ -36,4 +36,7 @@ export class RecipeDetailComponent implements OnInit {
       })
   }
 
+  onBack(){
+    this.router.navigate(["/"])
+  }
 }
