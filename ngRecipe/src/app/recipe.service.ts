@@ -9,23 +9,24 @@ export class RecipeService {
 
   recipesList: Recipe[] = [];
 
-  URL = "http://127.0.0.1:8080/api/recipes"
+  // URL = "https://recipetfip.herokuapp.com/"
+  URL = "http://127.0.0.1:8080/"
 
   constructor(
     private http:HttpClient
   ) { }
 
   getAllRecipes(){
-    return this.http.get<Recipe[]>(this.URL)
+    return this.http.get<Recipe[]>(this.URL+ "api/recipes")
   }
 
   getRecipe( recipeId:string){
-    const urlid = "http://127.0.0.1:8080/api/recipe/" + recipeId +"/";
+    const urlid = this.URL +"api/recipe/" + recipeId +"/";
     return this.http.get<Recipe>(urlid)
   }
 
   setNewRecipe(recipe:Recipe){
-    const urlpost = "http://127.0.0.1:8080/api/recipe"
+    const urlpost = this.URL+"api/recipe"
     return this.http.post<Recipe>(urlpost,recipe)
   }
 }

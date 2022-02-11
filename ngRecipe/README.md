@@ -1,6 +1,8 @@
 # NgRecipe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.  
+This is the front end for a simple recipe website (Master-Detail pattern) with reactive form used for user input. Data is fetched from the back end server written using Spring Boot Framework. Recipe information inputted by user is also being sent to the back end server  
+
 
 ## Development server
 
