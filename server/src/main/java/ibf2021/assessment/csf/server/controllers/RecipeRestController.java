@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,4 +45,16 @@ public class RecipeRestController{
             return new ResponseEntity<String>("", HttpStatus.NOT_FOUND);
         }
     }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> addRecipe(@RequestBody String recipe){
+        System.out.println(recipe);
+        Gson gson = new Gson();
+        Recipe recipetobeAdded = gson.fromJson(recipe, Recipe.class);
+        System.out.println(recipetobeAdded);
+        recipeSvc.addRecipe(recipetobeAdded);
+        return new ResponseEntity<String>("Saved", HttpStatus.CREATED);
+    }
+
 }

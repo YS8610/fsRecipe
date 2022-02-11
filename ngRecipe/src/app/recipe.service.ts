@@ -21,7 +21,11 @@ export class RecipeService {
 
   getRecipe( recipeId:string){
     const urlid = "http://127.0.0.1:8080/api/recipe/" + recipeId +"/";
-    console.log(urlid)
     return this.http.get<Recipe>(urlid)
+  }
+
+  setNewRecipe(recipe:Recipe){
+    const urlpost = "http://127.0.0.1:8080/api/recipe"
+    return this.http.post<Recipe>(urlpost,recipe)
   }
 }
