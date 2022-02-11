@@ -19,4 +19,9 @@ export class RecipeService {
     return this.http.get<Recipe[]>(this.URL)
   }
 
+  getRecipe( recipeId:string){
+    const urlid = "http://127.0.0.1:8080/api/recipe/" + recipeId +"/";
+    console.log(urlid)
+    return this.http.get<Recipe>(urlid)
+  }
 }
