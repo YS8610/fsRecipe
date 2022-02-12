@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-recipe-add',
@@ -60,7 +59,7 @@ export class RecipeAddComponent implements OnInit {
         this.ingredientStringArray.push(element.value)
       })
     this.recipetobeAdded.ingredients = this.ingredientStringArray
-    this.recipetobeAdded.id = uuidv4().toString().substring(0, 8)
+    this.recipetobeAdded.id = "0" //uuidv4().toString().substring(0, 8)
     console.log(this.recipetobeAdded)
 
     this.recipeSvc.setNewRecipe(this.recipetobeAdded)
