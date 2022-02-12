@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ibf2021.assessment.csf.server.models.Recipe;
 import ibf2021.assessment.csf.server.services.RecipeService;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
 
 /* Write your request hander in this file */
 
@@ -48,13 +50,17 @@ public class RecipeRestController{
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> addRecipe(@RequestBody String recipe){
-        System.out.println(recipe);
-        Gson gson = new Gson();
-        Recipe recipetobeAdded = gson.fromJson(recipe, Recipe.class);
-        System.out.println(recipetobeAdded);
+    public ResponseEntity<String> addRecipe(@RequestBody Recipe recipetobeAdded){
+        System.out.println(recipetobeAdded.toString());
+        // Gson gson = new Gson();
+        // Recipe recipetobeAdded = gson.fromJson(recipe, Recipe.class);
+        // System.out.println(recipetobeAdded);
+        Recipe emptyRecipewithID = new Recipe();
+        recipetobeAdded.setId(emptyRecipewithID.getId());
         recipeSvc.addRecipe(recipetobeAdded);
-        return new ResponseEntity<String>("Saved", HttpStatus.CREATED);
+        JsonObject value = Json.createObjectBuilder()
+            .add("message", "saved").build();
+        return new ResponseEntity<String>(value.toString(), HttpStatus.CREATED);
     }
 
 }
