@@ -1,8 +1,8 @@
 module.exports = [
   {
     context: [ '/api/**' ],
-    target: 'https://recipetfip.herokuapp.com/',
-    secure: true,
+    target: 'http://localhost:8080',
+    secure: false,
     logLeve: 'debug'
   }
 ]
