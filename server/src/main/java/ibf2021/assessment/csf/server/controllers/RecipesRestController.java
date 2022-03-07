@@ -25,7 +25,7 @@ public class RecipesRestController{
     @Autowired
     RecipeService recipeSvc;
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    // @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getRecipes(){
 
